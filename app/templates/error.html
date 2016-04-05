@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}museumzeit - {{errorCode}}{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/error.css')}}">
+  <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+      <h1><a href="/">museumzeit</a></h1>
+      <h2>{{errorCode}} - {{errorDesc}}</h2>
+  </div>
+{% endblock %}
