@@ -1,0 +1,14 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}museumzeit{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+
+  {{ city.name }}
+
+{% endblock %}

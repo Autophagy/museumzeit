@@ -19,6 +19,11 @@ def index():
     countries = Country.query.all()
     return render_template('index.html', countries=countries)
 
+@app.route('/<cityname>')
+def city(cityname):
+    city = City.query.filter(City.name.ilike(cityname)).first()
+    return render_template('city.html', city=city)
+
 class Country(db.Model):
     __tablename__ = 'countries'
     id = db.Column(db.Integer, primary_key=True)
