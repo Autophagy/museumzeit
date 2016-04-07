@@ -14,19 +14,19 @@
       <h1>museumzeit</h1>
     </div>
 
-    <ul>
+    <div id="countries">
       {% for country in countries %}
-        <li>
-          {{ country.name }}
-          <ul>
+        <div class="row country">
+          <h1>{{ country.name }}</h1>
+          <div class="row">
             {% for city in country.cities %}
-            <li>
+            <div class="col-xs-3 city">
               {{ city.name }}
-            </li>
+            </div>
             {% endfor %}
-          </ul>
-        </li>
+          </div>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 {% endblock %}
