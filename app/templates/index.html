@@ -13,5 +13,20 @@
     <div class="page-header">
       <h1>museumzeit</h1>
     </div>
+
+    <ul>
+      {% for country in countries %}
+        <li>
+          {{ country.name }}
+          <ul>
+            {% for city in country.cities %}
+            <li>
+              {{ city.name }}
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 {% endblock %}
