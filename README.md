@@ -1,2 +1,3 @@
-# museumzeit
-Museum + Art Gallery timetable
+![museumzeit](museumzeit.png)
+
+Museum + Art Gallery timetable, built with Flask.
