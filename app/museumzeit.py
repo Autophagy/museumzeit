@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-from flask.ext.script import Manager
+from flask.ext.script import Manager, Shell
 from flask_bootstrap import Bootstrap
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -13,6 +13,10 @@ db = SQLAlchemy(app)
 
 manager = Manager(app)
 Bootstrap(app)
+
+def make_shell_context():
+    return dict(app=app, db=db, Country=Country, City=City)
+manager.add_command("shell", Shell(make_context=make_shell_context))
 
 @app.route('/')
 def index():
