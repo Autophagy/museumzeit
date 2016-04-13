@@ -8,7 +8,7 @@ def index():
     countries = Country.query.all()
     return render_template('index.html', countries=countries)
 
-@app.route('/<cityname>')
+@main.route('/<cityname>')
 def city(cityname):
     city = City.query.filter(City.name.ilike(cityname)).first()
     return render_template('city.html', city=city)
