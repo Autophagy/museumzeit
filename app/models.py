@@ -14,6 +14,7 @@ class City(db.Model):
     __tablename__ = 'cities'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
+    timezone = db.Column(db.String(64))
     country_id = db.Column(db.Integer, db.ForeignKey('countries.id'))
 
     def __repr__(self):
