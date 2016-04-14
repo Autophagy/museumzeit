@@ -21,7 +21,7 @@
           <div class="row">
             {% for city in country.cities %}
             <div class="col-xs-1 city">
-              <a href="{{url_for('city', cityname=city.name)}}">{{ city.name }}</a>
+              <a href="{{url_for('main.city', cityname=city.name)}}">{{ city.name }}</a>
             </div>
             {% endfor %}
           </div>
