@@ -1,0 +1,51 @@
+body {
+  font-family: 'Alice', serif;
+  background-color: #F5F5F5;
+  color: #013E7D;
+  background-image: url('../images/index_background.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+a {
+  color: inherit;
+}
+
+.header-container {
+  text-align: center;
+  background-color: #013E7D;
+  padding: 10px 0px 10px 0px;
+  margin-top: 0px;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.22);
+  color: #F5F5F5;
+  height: 60px;
+}
+
+.header {
+  position: relative;
+  width: 900px;
+  text-align: left;
+  margin: 0px auto;
+  height: 100%;
+  display: inherit;
+}
+
+.header h1 {
+  margin: 0px;
+  position: absolute;
+}
+
+.header #museum-icon {
+  position: absolute;
+  left: 48.5%;
+  top: 6px;
+}
+
+.header #menu-icon {
+  position: absolute;
+  right: 0px;
+  top: 6px;
+}
