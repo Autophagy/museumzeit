@@ -1,3 +1,4 @@
+import datetime
 from flask import render_template, session, redirect, url_for, current_app, abort
 from .. import db
 from ..models import Country, City
@@ -10,10 +11,13 @@ def index():
 
 @main.route('/<cityname>')
 def city(cityname):
+    # No date provided, use today
+    date = datetime.datetime.now()
+
     city = City.query.filter(City.name.ilike(cityname)).first()
 
     # If no city is found, throw a 404 error
     if city == None:
         abort(404)
 
-    return render_template('city.html', city=city)
+    return render_template('city.html', city=city, date=date)

@@ -6,6 +6,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  text-align: center;
 }
 
 a {
@@ -13,7 +14,6 @@ a {
 }
 
 .header-container {
-  text-align: center;
   background-color: #013E7D;
   padding: 10px 0px 10px 0px;
   margin-top: 0px;
@@ -48,4 +48,13 @@ a {
   position: absolute;
   right: 0px;
   top: 6px;
+}
+
+.container {
+  display: inline-block;
+  width: 900px;
+}
+
+.container .location {
+  font-size: 3em;
 }

@@ -14,14 +14,12 @@
     <div class="header">
       <h1>museumzeit</h1>
       <img id="museum-icon" src="{{url_for('static', filename='images/museum-icon.png')}}"/>
-      <img id="menu-icon" src="{{url_for('static', filename='images/menu-icon.png')}}"
+      <img id="menu-icon" src="{{url_for('static', filename='images/menu-icon.png')}}"/>
     </div>
   </div>
 
   <div class="container">
-
+    <h2 class="location">{{ city.name }} - {{ date.day }}/{{ date.month }}/{{ date.year }}</h2>
   </div>
-
-
 
 {% endblock %}
