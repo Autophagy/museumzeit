@@ -48,12 +48,12 @@ class Museum(db.Model):
 class Period(db.Model):
     __tablename__ = 'periods'
     id = db.Column(db.Integer, primary_key=True)
-    validFrom = db.Column(db.Date)
-    validTo = db.Column(db.Date)
+    validFrom = db.Column(db.Date, nullable=True)
+    validTo = db.Column(db.Date, nullable=True)
     openTime = db.Column(db.Time)
     closedTime = db.Column(db.Time)
     free = db.Column(db.Boolean)
     museum_id = db.Column(db.Integer, db.ForeignKey('museums.id'))
 
     def __repr__(self):
-        return '<Period {0} [{1}] - {2} [{3}] for museum {4}>'.format(self.validFrom, self.openTime, self.ValidTo, self.closedTime, self.museum_id)  
+        return '<Period {0} [{1}] - {2} [{3}] for museum {4}>'.format(self.validFrom, self.openTime, self.ValidTo, self.closedTime, self.museum_id)
