@@ -31,7 +31,7 @@ a:hover {
 
 .header {
   position: relative;
-  width: 900px;
+  width: 1200px;
   text-align: left;
   margin: 0px auto;
   height: 100%;
@@ -45,8 +45,12 @@ a:hover {
 
 .header #museum-icon {
   position: absolute;
-  left: 48.5%;
-  top: 6px;
+  left: 50%;
+  top: 50%;
+  width: 27px;
+  height: 27px;
+  margin-top: -13px;
+  margin-left: -13px;
 }
 
 .header #menu-icon {
@@ -55,9 +59,8 @@ a:hover {
   top: 6px;
 }
 
-.container {
-  display: inline-block;
-  width: 900px;
+#main-container {
+  width: 1200px;
 }
 
 .container .location {
