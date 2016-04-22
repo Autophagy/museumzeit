@@ -18,8 +18,26 @@
     </div>
   </div>
 
-  <div class="container">
+  <div id="main-container" class="container-fluid">
     <h2 class="location">{{ city.name }} - {{ date.day }}/{{ date.month }}/{{ date.year }}</h2>
+
+    {% for museum in city.museums %}
+      <div class="row museum-row">
+        <div class="col-md-3">
+          {{ museum.name }}
+        </div>
+        <div class="col-md-8">
+          <div class="progress museum-open-time">
+            <div class="progress-bar" style="width:50%">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <span class="is-free"></span>
+        </div>
+      </div>
+    {% endfor %}
+
   </div>
 
 {% endblock %}

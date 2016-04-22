@@ -63,6 +63,33 @@ a:hover {
   width: 1200px;
 }
 
-.container .location {
+#main-container .location {
   font-size: 3em;
+}
+
+#main-container .museum-row {
+  padding: 5px;
+}
+
+#main-container .museum-row:nth-of-type(odd) {
+    background-color: #F5F5F5;
+}
+
+#main-container .museum-row:nth-of-type(even) {
+    background-color: #E6E6E6;
+}
+
+#main-container .museum-open-time {
+  margin-bottom: 0px;
+}
+
+#main-container .museum-open-time .progress-bar {
+  background-color: #013E7D;
+}
+
+#main-container .is-free {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #013E7D;
 }
