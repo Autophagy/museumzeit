@@ -23,17 +23,29 @@
 
     {% for museum in city.museums %}
       <div class="row museum-row">
-        <div class="col-md-3">
-          {{ museum.name }}
-        </div>
-        <div class="col-md-8">
-          <div class="progress museum-open-time">
-            <div class="progress-bar" style="width:50%">
+          <div class="row museum-summary-row">
+          <div class="col-md-3">
+            {{ museum.name }}
+          </div>
+          <div class="col-md-8">
+            <div class="progress museum-open-time">
+              <div class="progress-bar" style="width:50%">
+              </div>
             </div>
           </div>
+          <div class="col-md-1">
+            <span class="is-free"></span>
+          </div>
         </div>
-        <div class="col-md-1">
-          <span class="is-free"></span>
+        <div class="row museum-detail-row">
+          <div class="col-md-4 museum-map">
+            <a href="http://maps.google.com/maps?q={{ museum.latitude }}, {{ museum.longitude }}">
+              <img class="img-responsive" src="https://maps.google.com/maps/api/staticmap?markers=color:0x013E7D|{{ museum.latitude }},{{ museum.longitude }}&zoom=15&size=350x250"/>
+            </a>
+          </div>
+          <div class="col-md-8 museum-description">
+            {{ museum.description }}
+          </div>
         </div>
       </div>
     {% endfor %}

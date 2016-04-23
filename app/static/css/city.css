@@ -93,3 +93,7 @@ a:hover {
   height: 10px;
   background-color: #013E7D;
 }
+
+#main-container .museum-detail-row {
+  padding: 10px;
+}
