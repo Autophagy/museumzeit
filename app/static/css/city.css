@@ -79,6 +79,10 @@ a:hover {
     background-color: #E6E6E6;
 }
 
+#main-container .museum-summary-row {
+  cursor: pointer;
+}
+
 #main-container .museum-open-time {
   margin-bottom: 0px;
 }
@@ -95,5 +99,6 @@ a:hover {
 }
 
 #main-container .museum-detail-row {
+  display: none;
   padding: 10px;
 }

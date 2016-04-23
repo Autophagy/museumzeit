@@ -8,6 +8,15 @@
   <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
 {% endblock %}
 
+{% block scripts %}
+  {{super()}}
+  <script>
+  function showMuseumDescription(menuSelector) {
+    $(menuSelector).slideToggle(400);
+  }
+  </script>
+{% endblock %}
+
 {% block content %}
 
   <div class="header-container">
@@ -23,7 +32,7 @@
 
     {% for museum in city.museums %}
       <div class="row museum-row">
-          <div class="row museum-summary-row">
+          <div class="row museum-summary-row" onclick="$(this).parent().find('.museum-detail-row').slideToggle(400);">
           <div class="col-md-3">
             {{ museum.name }}
           </div>
