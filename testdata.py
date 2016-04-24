@@ -23,12 +23,12 @@ types = [museum, artGallery]
 
 # Museums
 
-britishMuseum = Museum(name='The British Museum', description='Lorem Ipsum', longitude=-0.1265, latitude=51.5194, city=london, type=museum)
-scienceMuseum = Museum(name='Science Museum', description='Lorem Ipsum', longitude=-0.1745, latitude=51.4978, city=london, type=museum)
-nationalGallery = Museum(name='National Gallery', description='Lorem Ipsum', longitude=-0.1283, latitude=51.5089, city=london, type=artGallery)
-naturalHistoryMuseum = Museum(name='Natural History Museum', description='Lorem Ipsum', longitude=-0.1764, latitude=51.4967, city=london, type=museum)
+britishMuseum = Museum(name='The British Museum', description='Lorem Ipsum', latitude=51.5194, longitude=-0.1265, city=london, type=museum)
+scienceMuseum = Museum(name='Science Museum', description='Lorem Ipsum', latitude=51.4978, longitude=-0.1745, city=london, type=museum)
+nationalGallery = Museum(name='National Gallery', description='Lorem Ipsum', latitude=51.5089, longitude=-0.1283, city=london, type=artGallery)
+naturalHistoryMuseum = Museum(name='Natural History Museum', description='Lorem Ipsum', latitude=51.4967, longitude=-0.1764, city=london, type=museum)
 
-pergamonMuseum = Museum(name='Pergamon Museum', description='Lorem Ipsum', longitude=13.3974, latitude=52.5211, city=berlin, type=museum)
+pergamonMuseum = Museum(name='Pergamon Museum', description='Lorem Ipsum', latitude=52.5211, longitude=13.3974, city=berlin, type=museum)
 
 museums = [britishMuseum, scienceMuseum, nationalGallery, naturalHistoryMuseum, pergamonMuseum]
 
