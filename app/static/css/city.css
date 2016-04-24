@@ -100,3 +100,7 @@ a:hover {
   display: none;
   padding: 10px;
 }
+
+#main-container .museum-detail-row .museum-description {
+  text-align: left;
+}
