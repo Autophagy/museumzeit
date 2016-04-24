@@ -67,10 +67,6 @@ a:hover {
   font-size: 3em;
 }
 
-#main-container .museum-row {
-  padding: 5px;
-}
-
 #main-container .museum-row:nth-of-type(odd) {
     background-color: #F5F5F5;
 }
@@ -81,6 +77,8 @@ a:hover {
 
 #main-container .museum-summary-row {
   cursor: pointer;
+  padding: 10px;
+  margin: 0px;
 }
 
 #main-container .museum-open-time {
