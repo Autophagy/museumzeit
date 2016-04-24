@@ -11,10 +11,11 @@ body {
 
 a {
   color: inherit;
+  font-weight: bold;
 }
 
 a:hover {
-  color: inherit;
+  color: #3174AF;
   text-decoration: none;
 }
 
@@ -41,6 +42,10 @@ a:hover {
 .header h1 {
   margin: 0px;
   position: absolute;
+}
+
+.header a:hover {
+  color: #F5F5F5;
 }
 
 .header #museum-icon {
@@ -103,4 +108,9 @@ a:hover {
 
 #main-container .museum-detail-row .museum-description {
   text-align: left;
+}
+
+#main-container .museum-detail-row .museum-link {
+  display: block;
+  margin-top: 10px;
 }
