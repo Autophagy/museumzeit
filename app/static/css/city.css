@@ -72,6 +72,11 @@ a:hover {
   font-size: 3em;
 }
 
+#main-container .legend-row{
+  padding: 5px 10px;
+  color: #777777;
+}
+
 #main-container .museum-row:nth-of-type(odd) {
     background-color: #F5F5F5;
 }
