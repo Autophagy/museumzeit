@@ -90,8 +90,12 @@ a:hover {
   margin-bottom: 0px;
 }
 
-#main-container .museum-open-time .progress-bar {
+#main-container .museum-open-time .open {
   background-color: #013E7D;
+}
+
+#main-container .museum-open-time .closed {
+  background-color: transparent;
 }
 
 #main-container .is-free {
