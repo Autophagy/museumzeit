@@ -42,7 +42,7 @@
         Free
       </div>
     </div>
-    {% for museum in city.museums %}
+    {% for museum in city.museums|sort(attribute='name') %}
       <div class="row museum-row">
           <div class="row museum-summary-row" onclick="$(this).parent().find('.museum-detail-row').slideToggle(400);">
           <div class="col-md-3">
