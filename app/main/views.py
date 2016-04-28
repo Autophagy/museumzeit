@@ -20,4 +20,12 @@ def city(cityname):
     if city == None:
         abort(404)
 
-    return render_template('city.html', city=city, date=date, earliestTime=8, latestTime=21)
+    museumPeriods = [x for f in map((lambda x: x.getValidPeriods(date)), city.museums) for x in f]
+
+    earliestTime = reduce(lambda a,b: a if (a < b) else b, map((lambda x: x.openTime), museumPeriods))
+    earliestTime = earliestTime.hour + 1 if earliestTime.minute > 30 else earliestTime.hour
+
+    latestTime = reduce(lambda a,b: a if (a > b) else b, map((lambda x: x.closedTime), museumPeriods))
+    latestTime = latestTime.hour + 1 if latestTime.minute > 30 else latestTime.hour
+
+    return render_template('city.html', city=city, date=date, earliestTime=earliestTime, latestTime=latestTime)
