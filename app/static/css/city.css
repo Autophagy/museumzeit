@@ -123,3 +123,24 @@ a:hover {
   display: block;
   margin-top: 10px;
 }
+
+#main-container .museum-row .timeline {
+  padding: 0px;
+}
+
+/* Timeline Styling */
+
+.timeline-background .hour-marker {
+  height: 20px;
+  width: 7.142857143%;
+  float: left;
+  position: relative;
+}
+
+.timeline-background .half-hour-marker {
+  height: 50%;
+  position: absolute;
+  top: 25%;
+  width: calc(100% + 1px);
+  border-right: 1px solid #CACACA;
+}
