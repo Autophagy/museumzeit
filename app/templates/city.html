@@ -59,7 +59,9 @@
             </div>
           </div>
           <div class="col-md-1">
-            <span class="is-free"></span>
+            {% if museum.isFree(date) %}
+              <span class="is-free"></span>
+            {% endif %}
           </div>
         </div>
         <div class="row museum-detail-row">

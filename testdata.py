@@ -38,7 +38,7 @@ museums = [britishMuseum, scienceMuseum, nationalGallery, naturalHistoryMuseum, 
 # Periods
 
 bmPeriod = Period(openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 30, 0), free=True, museum=britishMuseum)
-smPeriod = Period(openTime=datetime.time(8,0,0), closedTime=datetime.time(20, 0, 0), free=True, museum=scienceMuseum)
+smPeriod = Period(openTime=datetime.time(8,0,0), closedTime=datetime.time(20, 0, 0), free=False, museum=scienceMuseum)
 ngPeriod = Period(openTime=datetime.time(9,30,0), closedTime=datetime.time(14, 30, 0), free=True, museum=nationalGallery)
 nhmPeriod = Period(openTime=datetime.time(11,0,0), closedTime=datetime.time(19, 0, 0), free=True, museum=naturalHistoryMuseum)
 
