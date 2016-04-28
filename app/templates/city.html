@@ -11,10 +11,13 @@
 
 {% block scripts %}
   {{super()}}
+  <script src="{{ url_for('static', filename='js/timeline-generator.js') }}"></script>
   <script>
   function showMuseumDescription(menuSelector) {
     $(menuSelector).slideToggle(400);
   }
+
+  generateLegend({{earliestTime}}, {{latestTime}});
   </script>
 {% endblock %}
 
@@ -36,21 +39,7 @@
         Museum Name
       </div>
       <div class="col-md-8">
-        <div class="timeline-background row">
-          <div class="hour-marker">9<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">10<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">11<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">12<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">13<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">14<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">15<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">16<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">17<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">18<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">19<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">20<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">21<div class="half-hour-marker"></div></div>
-          <div class="hour-marker">22</div>
+        <div id="timeline-legend" class="row">
         </div>
       </div>
       <div class="col-md-1">

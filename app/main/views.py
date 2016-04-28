@@ -20,4 +20,4 @@ def city(cityname):
     if city == None:
         abort(404)
 
-    return render_template('city.html', city=city, date=date)
+    return render_template('city.html', city=city, date=date, earliestTime=8, latestTime=21)

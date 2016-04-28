@@ -130,14 +130,13 @@ a:hover {
 
 /* Timeline Styling */
 
-.timeline-background .hour-marker {
+#timeline-legend .hour-marker {
   height: 20px;
-  width: 7.142857143%;
   float: left;
   position: relative;
 }
 
-.timeline-background .half-hour-marker {
+#timeline-legend .half-hour-marker {
   height: 50%;
   position: absolute;
   top: 25%;
