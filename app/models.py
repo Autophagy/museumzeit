@@ -61,8 +61,10 @@ class Period(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     validFrom = db.Column(db.Date, nullable=True)
     validTo = db.Column(db.Date, nullable=True)
-    openTime = db.Column(db.Time)
-    closedTime = db.Column(db.Time)
+    weekday = db.Column(db.Integer, nullable=True)
+    open = db.Column(db.Boolean)
+    openTime = db.Column(db.Time, nullable=True)
+    closedTime = db.Column(db.Time, nullable=True)
     free = db.Column(db.Boolean)
     museum_id = db.Column(db.Integer, db.ForeignKey('museums.id'))
 
