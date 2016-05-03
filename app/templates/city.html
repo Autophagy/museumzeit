@@ -35,7 +35,7 @@
   </div>
 
   <div id="main-container" class="container-fluid">
-    <h2 class="location">{{ city.name }} - {{ date.day }}/{{ date.month }}/{{ date.year }}</h2>
+    <h2 class="location">{{ city.name }} - {{ date.strftime('%d/%m/%Y') }}</h2>
 
     <div class="row legend-row">
       <div class="col-md-3">
