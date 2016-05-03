@@ -93,14 +93,7 @@ a:hover {
 
 #main-container .museum-open-time {
   margin-bottom: 0px;
-}
-
-#main-container .museum-open-time .open {
-  background-color: #013E7D;
-}
-
-#main-container .museum-open-time .closed {
-  background-color: transparent;
+  position: relative;
 }
 
 #main-container .is-free {
@@ -142,4 +135,9 @@ a:hover {
   top: 25%;
   width: calc(100% + 1px);
   border-right: 1px solid #CACACA;
+}
+
+#main-container .museum-open-time .open {
+  position: absolute;
+  background-color: #013E7D;
 }

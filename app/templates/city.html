@@ -18,6 +18,9 @@
   }
 
   generateLegend({{earliestTime}}, {{latestTime}});
+  {% for museum in city.museums %}{% for period in museum.getValidPeriods(date) %}
+  addPeriodToTimeline({{ museum.id }},{{ earliestTime }},{{ latestTime }},{{ period.openTime.hour*60 + period.openTime.minute}},{{ period.closedTime.hour*60 + period.closedTime.minute}});
+  {% endfor %}{% endfor %}
   </script>
 {% endblock %}
 
@@ -47,15 +50,13 @@
       </div>
     </div>
     {% for museum in city.museums|sort(attribute='name') %}
-      <div class="row museum-row">
+      <div id="museum-{{museum.id}}" class="row museum-row">
           <div class="row museum-summary-row" onclick="$(this).parent().find('.museum-detail-row').slideToggle(400);">
           <div class="col-md-3">
             {{ museum.name }}
           </div>
           <div class="col-md-8 timeline">
             <div class="progress museum-open-time">
-              <div class="progress-bar open" style="width:50%">
-              </div>
             </div>
           </div>
           <div class="col-md-1">
