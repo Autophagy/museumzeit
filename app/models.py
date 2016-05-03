@@ -54,6 +54,26 @@ class Museum(db.Model):
 
     @hybrid_method
     def getValidPeriods(self, date):
+        # Return periods according to the following priority:
+        # 1. Records with between dates and a specific day.
+        # 2. Records with no between dates, but a specific day.
+        # 3. Records with between dates, but no day.
+        # 4. Records with no between dates and no day.
+
+        day = date.weekday()
+
+        periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).count()
+        if periods > 0:
+            return self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).all()
+
+        periods = self.periods.filter(Period.weekday == day).count()
+        if periods > 0:
+            return self.periods.filter(Period.weekday == day).all()
+
+        periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count()
+        if periods > 0:
+            return self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count().all()
+
         return self.periods
 
 class Period(db.Model):
