@@ -24,3 +24,7 @@ function addPeriodToTimeline(museumID, earliestTime, latestTime, openTime, close
 
   $('#museum-' + museumID + ' .museum-open-time').append('<div class="progress-bar open" style="width:' + widthOfBlock * 100 +'%; left:' + startOfBlock * 100 + '%;"></div>');
 }
+
+function addClosedPeriod(museumID) {
+    $('#museum-' + museumID + ' .museum-open-time').append('<div class="progress-bar closed" style="width: 100%;"></div>');
+}

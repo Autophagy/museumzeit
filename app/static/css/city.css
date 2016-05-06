@@ -112,6 +112,11 @@ a:hover {
   text-align: left;
 }
 
+#main-container .museum-detail-row .closed-status {
+  font-weight: bold;
+  color: #7D0101;    
+}
+
 #main-container .museum-detail-row .museum-link {
   display: block;
   margin-top: 10px;
@@ -140,4 +145,8 @@ a:hover {
 #main-container .museum-open-time .open {
   position: absolute;
   background-color: #013E7D;
+}
+
+#main-container .museum-open-time .closed {
+  background-color: #7D0101;
 }

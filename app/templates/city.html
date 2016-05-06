@@ -18,9 +18,21 @@
   }
 
   generateLegend({{earliestTime}}, {{latestTime}});
-  {% for museum in city.museums %}{% for period in museum.getValidPeriods(date) %}
-  addPeriodToTimeline({{ museum.id }},{{ earliestTime }},{{ latestTime }},{{ period.openTime.hour*60 + period.openTime.minute}},{{ period.closedTime.hour*60 + period.closedTime.minute}});
-  {% endfor %}{% endfor %}
+  {% for museum in city.museums %}
+
+      {% if museum.isClosed(date) %}
+
+      addClosedPeriod({{ museum.id }});
+
+      {% else %}
+
+          {% for period in museum.getValidPeriods(date) %}
+          addPeriodToTimeline({{ museum.id }},{{ earliestTime }},{{ latestTime }},{{ period.openTime.hour*60 + period.openTime.minute}},{{ period.closedTime.hour*60 + period.closedTime.minute}});
+          {% endfor %}
+
+      {% endif %}
+
+  {% endfor %}
   </script>
 {% endblock %}
 
@@ -73,14 +85,20 @@
           </div>
           <div class="col-md-8 museum-description">
             <p>{{ museum.description }}</p>
-            <div class="open-status">
-                <p>Open Today:</p>
-                <ul>
-                {% for period in museum.getValidPeriods(date) %}
-                    <li>{{ period.openTime.strftime('%H:%M')}} - {{period.closedTime.strftime('%H:%M')}}</li>
-                {% endfor %}
-                </ul>
-            </div>
+            {% if museum.isClosed(date) %}
+                <div class="closed-status">
+                    <p>Closed today</p>
+                </div>
+            {% else %}
+                <div class="open-status">
+                    <p>Open Today:</p>
+                    <ul>
+                    {% for period in museum.getValidPeriods(date) %}
+                        <li>{{ period.openTime.strftime('%H:%M')}} - {{period.closedTime.strftime('%H:%M')}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             <span class="museum-link">
               <a href="{{ museum.website }}">{{ museum.name }} Website</a>
             </span>
