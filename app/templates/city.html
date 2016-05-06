@@ -5,6 +5,7 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('static', filename='css/city.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css">
   <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 {% endblock %}
@@ -12,10 +13,17 @@
 {% block scripts %}
   {{super()}}
   <script src="{{ url_for('static', filename='js/timeline-generator.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
   <script>
   function showMuseumDescription(menuSelector) {
     $(menuSelector).slideToggle(400);
   }
+
+  $('#datepicker').datepicker({format: "dd/mm/yyyy"});
+
+  $('#datepicker').datepicker().on('changeDate', function(e) {
+        window.location.href = '/{{city.name}}/' + $('#datepicker').val().replace(/\//g, '-');
+    });
 
   generateLegend({{earliestTime}}, {{latestTime}});
   {% for museum in city.museums %}{% for period in museum.getValidPeriods(date) %}
@@ -27,11 +35,11 @@
 {% block content %}
 
   <div class="header-container">
-    <div class="header">
+    <header class="header">
       <a href="{{url_for('main.index')}}"><h1>museumzeit</h1></a>
       <img id="museum-icon" src="{{url_for('static', filename='images/museum-icon.png')}}"/>
-      <img id="menu-icon" src="{{url_for('static', filename='images/menu-icon.png')}}"/>
-    </div>
+        <input type="text" class="form-control" placeholder="dd/mm/yyyy" id="datepicker" readonly>
+    </header>
   </div>
 
   <div id="main-container" class="container-fluid">
