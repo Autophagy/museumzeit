@@ -64,16 +64,17 @@
     {% for museum in city.museums|sort(attribute='name') %}
       <div id="museum-{{museum.id}}" class="row museum-row">
           <div class="row museum-summary-row" onclick="$(this).parent().find('.museum-detail-row').slideToggle(400);">
-          <div class="col-md-3">
+          <div class="col-md-3 {{ 'closed' if museum.isClosed(date) }}">
             {{ museum.name }}
           </div>
+
           <div class="col-md-8 timeline">
             <div class="progress museum-open-time">
             </div>
           </div>
           <div class="col-md-1">
             {% if museum.isFree(date) %}
-              <span class="is-free"></span>
+              <span class="is-free {{ 'closed' if museum.isClosed(date) }}"></span>
             {% endif %}
           </div>
         </div>
@@ -86,7 +87,7 @@
           <div class="col-md-8 museum-description">
             <p>{{ museum.description }}</p>
             {% if museum.isClosed(date) %}
-                <div class="closed-status">
+                <div class="closed-status closed">
                     <p>Closed today</p>
                 </div>
             {% else %}

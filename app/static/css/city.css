@@ -68,6 +68,10 @@ a:hover {
   width: 1200px;
 }
 
+#main-container .closed {
+  color: #7D0101;
+}
+
 #main-container .location {
   font-size: 3em;
 }
@@ -103,6 +107,10 @@ a:hover {
   background-color: #013E7D;
 }
 
+#main-container .is-free.closed {
+    background-color: #7D0101;
+}
+
 #main-container .museum-detail-row {
   display: none;
   padding: 10px;
@@ -114,7 +122,6 @@ a:hover {
 
 #main-container .museum-detail-row .closed-status {
   font-weight: bold;
-  color: #7D0101;    
 }
 
 #main-container .museum-detail-row .museum-link {
