@@ -72,7 +72,15 @@
             </a>
           </div>
           <div class="col-md-8 museum-description">
-            {{ museum.description }}
+            <p>{{ museum.description }}</p>
+            <div class="open-status">
+                <p>Open Today:</p>
+                <ul>
+                {% for period in museum.getValidPeriods(date) %}
+                    <li>{{ period.openTime.strftime('%H:%M')}} - {{period.closedTime.strftime('%H:%M')}}</li>
+                {% endfor %}
+                </ul>
+            </div>
             <span class="museum-link">
               <a href="{{ museum.website }}">{{ museum.name }} Website</a>
             </span>
