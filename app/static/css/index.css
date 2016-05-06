@@ -34,3 +34,18 @@ a {
 #countries .city {
   font-size: 1.5em;
 }
+
+#credits {
+  margin: 1em 0;
+  text-align: center;
+}
+
+#credits a {
+  color: inherit;
+  font-weight: bold;
+}
+
+#credits a:hover {
+  color: #3174AF;
+  text-decoration: none;
+}
