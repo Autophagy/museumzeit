@@ -53,6 +53,11 @@ class Museum(db.Model):
         return reduce(lambda a,b: a or b, map((lambda x: x.free), periods))
 
     @hybrid_method
+    def isClosed(self, date):
+        periods = self.getValidPeriods(date)
+        return reduce(lambda a,b: a or b, map((lambda x: not x.open), periods))
+
+    @hybrid_method
     def getValidPeriods(self, date):
         # Return periods according to the following priority:
         # 1. Records with between dates and a specific day.

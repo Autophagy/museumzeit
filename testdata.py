@@ -5,21 +5,15 @@ import datetime
 germany = Country(name='Germany', flagURL='de.png')
 uk = Country(name='United Kingdom', flagURL='uk.png')
 
-countries = [germany, uk]
-
 # Cities
 
 berlin = City(name='Berlin', timezone='Europe/Berlin', country=germany)
 london = City(name='London', timezone='Europe/London', country=uk)
 
-cities = [berlin, london]
-
 # Types
 
 museum = Type(name='Museum', iconURL='museum.png')
 artGallery = Type(name='Art Gallery', iconURL='artGallery.png')
-
-types = [museum, artGallery]
 
 # Museums
 
@@ -33,22 +27,17 @@ naturalHistoryMuseum = Museum(name='Natural History Museum', description=loremDe
 
 pergamonMuseum = Museum(name='Pergamon Museum', description=loremDesc, website="http://www.smb.museum/museen-und-einrichtungen/pergamonmuseum/home.html", latitude=52.5211, longitude=13.3974, city=berlin, type=museum)
 
-museums = [britishMuseum, scienceMuseum, nationalGallery, naturalHistoryMuseum, pergamonMuseum]
-
 # Periods
 
 bmPeriod = Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 30, 0), free=True, museum=britishMuseum)
 smPeriod = Period(open=True, openTime=datetime.time(8,0,0), closedTime=datetime.time(20, 0, 0), free=False, museum=scienceMuseum)
 ngPeriod = Period(open=True, openTime=datetime.time(9,30,0), closedTime=datetime.time(14, 30, 0), free=True, museum=nationalGallery)
+
+ngPeriod2 = Period(open=True, openTime=datetime.time(16,00,0), closedTime=datetime.time(19, 30, 0), free=True, museum=nationalGallery)
+
 nhmPeriod = Period(open=True, openTime=datetime.time(11,0,0), closedTime=datetime.time(19, 0, 0), free=True, museum=naturalHistoryMuseum)
 
 pmPeriod = Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(18, 30, 0), free=False, museum=pergamonMuseum)
 
-periods = [bmPeriod, pmPeriod]
-
 db.session.add_all(countries)
-db.session.add_all(cities)
-db.session.add_all(types)
-db.session.add_all(museums)
-db.session.add_all(periods)
 db.session.commit()

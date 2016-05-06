@@ -26,9 +26,21 @@
     });
 
   generateLegend({{earliestTime}}, {{latestTime}});
-  {% for museum in city.museums %}{% for period in museum.getValidPeriods(date) %}
-  addPeriodToTimeline({{ museum.id }},{{ earliestTime }},{{ latestTime }},{{ period.openTime.hour*60 + period.openTime.minute}},{{ period.closedTime.hour*60 + period.closedTime.minute}});
-  {% endfor %}{% endfor %}
+  {% for museum in city.museums %}
+
+      {% if museum.isClosed(date) %}
+
+      addClosedPeriod({{ museum.id }});
+
+      {% else %}
+
+          {% for period in museum.getValidPeriods(date) %}
+          addPeriodToTimeline({{ museum.id }},{{ earliestTime }},{{ latestTime }},{{ period.openTime.hour*60 + period.openTime.minute}},{{ period.closedTime.hour*60 + period.closedTime.minute}});
+          {% endfor %}
+
+      {% endif %}
+
+  {% endfor %}
   </script>
 {% endblock %}
 
@@ -60,16 +72,17 @@
     {% for museum in city.museums|sort(attribute='name') %}
       <div id="museum-{{museum.id}}" class="row museum-row">
           <div class="row museum-summary-row" onclick="$(this).parent().find('.museum-detail-row').slideToggle(400);">
-          <div class="col-md-3">
+          <div class="col-md-3 {{ 'closed' if museum.isClosed(date) }}">
             {{ museum.name }}
           </div>
+
           <div class="col-md-8 timeline">
             <div class="progress museum-open-time">
             </div>
           </div>
           <div class="col-md-1">
             {% if museum.isFree(date) %}
-              <span class="is-free"></span>
+              <span class="is-free {{ 'closed' if museum.isClosed(date) }}"></span>
             {% endif %}
           </div>
         </div>
@@ -80,7 +93,21 @@
             </a>
           </div>
           <div class="col-md-8 museum-description">
-            {{ museum.description }}
+            <p>{{ museum.description }}</p>
+            {% if museum.isClosed(date) %}
+                <div class="closed-status closed">
+                    <p>Closed today</p>
+                </div>
+            {% else %}
+                <div class="open-status">
+                    <p>Open Today:</p>
+                    <ul>
+                    {% for period in museum.getValidPeriods(date) %}
+                        <li>{{ period.openTime.strftime('%H:%M')}} - {{period.closedTime.strftime('%H:%M')}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             <span class="museum-link">
               <a href="{{ museum.website }}">{{ museum.name }} Website</a>
             </span>
