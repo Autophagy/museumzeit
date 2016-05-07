@@ -60,9 +60,20 @@ a:hover {
 
 .header #datepicker {
   position: absolute;
+  height: 46px;
   right: 0px;
-  top: 2px;
-  width: 130px;
+  top: 0px;
+  background-color: transparent;
+  font-size: 2em;
+}
+
+.header #datepicker:hover, .header #datepicker:focus {
+  color: inherit;
+}
+
+.datepicker td.active {
+  background-color: #013E7D !important;
+  background-image: none !important;
 }
 
 #main-container {

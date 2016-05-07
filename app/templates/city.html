@@ -19,11 +19,17 @@
     $(menuSelector).slideToggle(400);
   }
 
+  Date.prototype.getFormattedDate = function () {
+    var d = ('0' + this.getDate()).slice(-2)
+    var m = ('0' + (this.getMonth() + 1)).slice(-2)
+    return d + '-' + m + '-' + this.getFullYear()
+  };
+
   $('#datepicker').datepicker({format: "dd/mm/yyyy"});
 
   $('#datepicker').datepicker().on('changeDate', function(e) {
-        window.location.href = '/{{city.name}}/' + $('#datepicker').val().replace(/\//g, '-');
-    });
+    window.location.href = '/{{city.name}}/' + e.date.getFormattedDate();
+  });
 
   generateLegend({{earliestTime}}, {{latestTime}});
   {% for museum in city.museums %}
@@ -50,7 +56,7 @@
     <header class="header">
       <a href="{{url_for('main.index')}}"><h1>museumzeit</h1></a>
       <img id="museum-icon" src="{{url_for('static', filename='images/museum-icon.png')}}"/>
-        <input type="text" class="form-control" placeholder="dd/mm/yyyy" id="datepicker" readonly>
+      <button class="btn small" id="datepicker" data-date-format="dd-mm-yyyy"><span class="glyphicon glyphicon-calendar"></span></button>
     </header>
   </div>
 
@@ -119,7 +125,7 @@
     <div id="credits">
       built by <a href="https://autophagy.github.io/" target="_blank">autophagy</a> • <a href="https://github.com/Autophagy/museumzeit" target="_blank">github</a>
     </div>
-    
+
   </div>
 
 {% endblock %}
