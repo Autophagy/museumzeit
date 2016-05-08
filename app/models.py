@@ -44,42 +44,62 @@ class Museum(db.Model):
     type_id = db.Column(db.Integer, db.ForeignKey('types.id'))
     periods = db.relationship('Period', backref='museum', lazy='dynamic')
 
+    free = None
+    closed = None
+    validPeriods = None
+
     def __repr__(self):
         return '<Museum {0}>'.format(self.name)
 
     @hybrid_method
     def isFree(self, date):
-        periods = self.getValidPeriods(date)
-        return reduce(lambda a,b: a or b, map((lambda x: x.free), periods))
+        if self.free is not None:
+            return self.free
+        else:
+            periods = self.getValidPeriods(date)
+            self.free = reduce(lambda a,b: a or b, map((lambda x: x.free), periods))
+            return self.free
 
     @hybrid_method
     def isClosed(self, date):
-        periods = self.getValidPeriods(date)
-        return reduce(lambda a,b: a or b, map((lambda x: not x.open), periods))
+        if self.closed is not None:
+            return self.closed
+        else:
+            periods = self.getValidPeriods(date)
+            self.closed = reduce(lambda a,b: a or b, map((lambda x: not x.open), periods))
+            return self.closed
 
     @hybrid_method
     def getValidPeriods(self, date):
         # Return periods according to the following priority:
-        # 1. Records with between dates and a specific day.
-        # 2. Records with no between dates, but a specific day.
-        # 3. Records with between dates, but no day.
-        # 4. Records with no between dates and no day.
+        # A. Records with between dates and a specific day.
+        # B. Records with no between dates, but a specific day.
+        # C. Records with between dates, but no day.
+        # D. Records with no between dates and no day.
 
-        day = date.weekday()
+        if self.validPeriods is not None:
+            return self.validPeriods
+        else:
 
-        periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).first()
-        if periods is not None:
-            return self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).all()
+            day = date.weekday()
 
-        periods = self.periods.filter(Period.weekday == day).first()
-        if periods is not None:
-            return self.periods.filter(Period.weekday == day).all()
+            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).first()
+            if periods is not None:
+                self.validPeriods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).all()
+                return self.validPeriods
 
-        periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).first()
-        if periods is not None:
-            return self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count().all()
+            periods = self.periods.filter(Period.weekday == day).first()
+            if periods is not None:
+                self.validPeriods = self.periods.filter(Period.weekday == day).all()
+                return self.validPeriods
 
-        return self.periods.filter(Period.validFrom == None, Period.validTo == None, Period.weekday == None)
+            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).first()
+            if periods is not None:
+                self.validPeriods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count().all()
+                return self.validPeriods
+
+            self.validPeriods = self.periods.filter(Period.validFrom == None, Period.validTo == None, Period.weekday == None)
+            return self.validPeriods
 
 class Period(db.Model):
     __tablename__ = 'periods'
