@@ -83,22 +83,22 @@ class Museum(db.Model):
 
             day = date.weekday()
 
-            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).first()
-            if periods is not None:
-                self.validPeriods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).all()
+            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).all()
+            if periods != []:
+                self.validPeriods = periods
                 return self.validPeriods
 
-            periods = self.periods.filter(Period.weekday == day).first()
-            if periods is not None:
-                self.validPeriods = self.periods.filter(Period.weekday == day).all()
+            periods = self.periods.filter(Period.weekday == day).all()
+            if periods != []:
+                self.validPeriods = periods
                 return self.validPeriods
 
-            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).first()
-            if periods is not None:
-                self.validPeriods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count().all()
+            periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date).all()
+            if periods != []:
+                self.validPeriods = periods
                 return self.validPeriods
 
-            self.validPeriods = self.periods.filter(Period.validFrom == None, Period.validTo == None, Period.weekday == None)
+            self.validPeriods = self.periods.filter(Period.validFrom == None, Period.validTo == None, Period.weekday == None).all()
             return self.validPeriods
 
 class Period(db.Model):
