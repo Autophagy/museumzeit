@@ -55,6 +55,7 @@ class Museum(db.Model):
     @hybrid_method
     def isClosed(self, date):
         periods = self.getValidPeriods(date)
+        print(periods)
         return reduce(lambda a,b: a or b, map((lambda x: not x.open), periods))
 
     @hybrid_method
@@ -66,6 +67,7 @@ class Museum(db.Model):
         # 4. Records with no between dates and no day.
 
         day = date.weekday()
+        print(day)
 
         periods = self.periods.filter(Period.validFrom <= date, Period.validTo >= date, Period.weekday == day).count()
         if periods > 0:
@@ -79,7 +81,7 @@ class Museum(db.Model):
         if periods > 0:
             return self.periods.filter(Period.validFrom <= date, Period.validTo >= date).count().all()
 
-        return self.periods
+        return self.periods.filter(Period.validFrom == None, Period.validTo == None, Period.weekday == None)
 
 class Period(db.Model):
     __tablename__ = 'periods'
