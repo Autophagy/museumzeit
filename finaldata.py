@@ -53,7 +53,7 @@ Period(open=True, openTime=datetime.time(10,30,0), closedTime=datetime.time(17, 
 Period(open=True, openTime=datetime.time(10,00,0), closedTime=datetime.time(18, 00, 0), free=True, museum=iwm)
 
 Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 00, 0), free=False, museum=jml)
-Period(open=True, openTime=datetime.time(12,0,0), closedTime=datetime.time(12, 30, 0), weekday=4, free=False, museum=jml)
+Period(open=False, openTime=datetime.time(12,0,0), closedTime=datetime.time(12, 30, 0), weekday=4, free=False, museum=jml)
 
 Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(18, 00, 0), free=False, museum=ltm)
 Period(open=True, openTime=datetime.time(11,0,0), closedTime=datetime.time(18, 00, 0), weekday=4, free=False, museum=ltm)
@@ -67,7 +67,7 @@ Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 0
 
 Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(18, 00, 0), free=True, museum=npg)
 Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(21, 00, 0), weekday=3, free=True, museum=npg)
-Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(12, 00, 0), weekday=4, free=True, museum=npg)
+Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(21, 00, 0), weekday=4, free=True, museum=npg)
 
 Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 50, 0), free=True, museum=nhm)
 
