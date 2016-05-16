@@ -6,3 +6,6 @@ include
 
 *.sqlite
 *.pyc
+
+# Testing
+tmp
