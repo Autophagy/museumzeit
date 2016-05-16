@@ -8,16 +8,36 @@ from werkzeug.contrib.profiler import ProfilerMiddleware
 app = create_app('development')
 manager = Manager(app)
 
+COV = None
+if os.environ.get('FLASK_COVERAGE'):
+    import coverage
+    COV = coverage.coverage(branch=True, include='app/*')
+    COV.start()
+
 def make_shell_context():
     return dict(app=app, db=db, Country=Country, City=City, Type=Type, Museum=Museum, Period=Period)
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
 @manager.command
-def test():
+def test(coverage=False):
+    if coverage and not os.environ.get('FLASK_COVERAGE'):
+        import sys
+        os.environ['FLASK_COVERAGE'] = '1'
+        os.execvp(sys.executable, [sys.executable] + sys.argv)
+
     import unittest
     tests = unittest.TestLoader().discover('tests')
-    print(tests.countTestCases())
     unittest.TextTestRunner(verbosity=2).run(tests)
+    if COV:
+        COV.stop()
+        COV.save()
+        print('Coverage Summary:')
+        COV.report()
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        covdir = os.path.join(basedir, 'tmp/coverage')
+        COV.html_report(directory=covdir)
+        print('HTML report: file://{}/index.html'.format(covdir))
+        COV.erase()
 
 if __name__ == '__main__':
     manager.run()
