@@ -15,8 +15,7 @@ class MuseumModelTestCase(unittest.TestCase):
         london = City(name='London', timezone='Europe/London', country=uk)
         museum = Type(name='Museum', iconURL='museum.png')
         artGallery = Type(name='Art Gallery', iconURL='artGallery.png')
-        loremDesc = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.'
-        bm = Museum(name='British Museum', description=loremDesc, website='http://www.britishmuseum.org', latitude=51.5194, longitude=-0.1265, city=london, type=museum)
+        bm = Museum(name='British Museum', description='', website='http://www.britishmuseum.org', latitude=51.5194, longitude=-0.1265, city=london, type=museum)
         Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(17, 30, 0), free=True, museum=bm)
         Period(open=True, openTime=datetime.time(10,0,0), closedTime=datetime.time(20, 30, 0), weekday=4, free=True, museum=bm)
 
