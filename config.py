@@ -5,6 +5,7 @@ base = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SSL_DISABLE = True
 
     @staticmethod
     def init_app(app):
@@ -21,9 +22,13 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
+class HerokuConfig(ProductionConfig):
+    SSL_DISABLE = bool(os.environ.get('SSL_DISABLE'))
+
 config = {
     'development': DevelopmentConfig,
     'testing' : TestingConfig,
     'production' : ProductionConfig,
+    'heroku': HerokuConfig,
     'default': DevelopmentConfig
 }
