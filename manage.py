@@ -45,5 +45,17 @@ def profile(length=25, profile_dir=None):
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length], profile_dir=profile_dir)
     app.run()
 
+@manager.command
+def deploy():
+    import finaldata as fd
+    db.drop_all()
+    db.create_all()
+
+    Country.insertCountries(fd.getCountries())
+    City.insertCities(fd.getCities())
+    Type.insertTypes(fd.getTypes())
+    Museum.insertMuseums(fd.getMuseums())
+    Period.insertPeriods(fd.getPeriods())
+
 if __name__ == '__main__':
     manager.run()
