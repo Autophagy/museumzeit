@@ -5,7 +5,7 @@ from app.models import Country, City, Type, Museum, Period
 from flask.ext.script import Manager, Shell
 from werkzeug.contrib.profiler import ProfilerMiddleware
 
-app = create_app('development')
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 
 COV = None
