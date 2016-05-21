@@ -33,7 +33,7 @@ class HerokuConfig(ProductionConfig):
         from logging import StreamHandler
         handler = StreamHandler()
         handler.setLevel(logging.WARNING)
-        app.logger.addHandler(file_handler)
+        app.logger.addHandler(handler)
 
 config = {
     'development': DevelopmentConfig,
