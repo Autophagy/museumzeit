@@ -2,10 +2,6 @@ body {
   font-family: 'Alice', serif;
   background-color: #F5F5F5;
   color: #013E7D;
-  background-image: url('../images/index_background.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
   text-align: center;
 }
 
