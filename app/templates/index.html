@@ -16,11 +16,11 @@
     </div>
 
     <div id="countries">
-      {% for country in countries %}
+      {% for country in countries|sort(attribute='name') %}
         <div class="row country">
           <h1>{{ country.name }}</h1>
           <div class="row">
-            {% for city in country.cities %}
+            {% for city in country.cities|sort(attribute='name') %}
             <div class="col-xs-1 city">
               <a href="{{url_for('main.city', cityname=city.name)}}">{{ city.name }}</a>
             </div>
