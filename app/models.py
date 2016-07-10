@@ -24,7 +24,7 @@ class Country(db.Model):
 class City(db.Model):
     __tablename__ = 'cities'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
+    name = db.Column(db.Unicode(64), unique=True)
     timezone = db.Column(db.String(64))
     country_id = db.Column(db.Integer, db.ForeignKey('countries.id'))
     museums = db.relationship('Museum', backref='city', lazy='dynamic')
@@ -66,8 +66,8 @@ class Type(db.Model):
 class Museum(db.Model):
     __tablename__ = 'museums'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-    description = db.Column(db.Text)
+    name = db.Column(db.Unicode(64), unique=True)
+    description = db.Column(db.UnicodeText)
     website = db.Column(db.String(64))
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
