@@ -168,6 +168,12 @@ a:hover {
   background-color: #DC3023;
 }
 
+#accuracy-warning {
+  margin-top: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
 #credits {
   margin: 1em 0;
 }
